@@ -99,7 +99,7 @@ def sphere_volume_parallel2(n,d,np=10):
     
 def main():
     #Ex1
-    '''
+
     dots = [1000, 10000, 100000, 10000000]
     for n in dots:
         approximate_pi(n)
@@ -129,7 +129,7 @@ def main():
     print(f"Ex3:\nAverage Volume = {average_volume}\nRegular loop time = {stop-start}")
     
     sphere_volume_parallel1(n, d, 10)
-'''
+
     #Ex4
     n = 1000000
     d = 11
