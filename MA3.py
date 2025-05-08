@@ -80,7 +80,7 @@ def sphere_volume_parallel1(n,d,np=10):
     result = sum([f.result() for f in futures])
     stop = pc()
     print(f'Sphere volume parallel 1 took {stop-start} seconds to complete')
-    return result / (d-1)
+    return result / (np)
 
 #Ex4: parallel code - parallelize actual computations by splitting data
 def sphere_volume_parallel2(n,d,np=10):
@@ -90,7 +90,7 @@ def sphere_volume_parallel2(n,d,np=10):
     start = pc()
     
     with future.ProcessPoolExecutor() as ex:
-        futures = [ex.submit(sphere_volume, n, d) for _ in range(np)]
+        futures = [ex.submit(sphere_volume, int(n/np), d) for _ in range(np)]
     result = sum([f.result() for f in futures])
     stop = pc()
     print(f'Sphere volume parallel 2 took {stop-start} seconds to complete')
@@ -99,7 +99,7 @@ def sphere_volume_parallel2(n,d,np=10):
     
 def main():
     #Ex1
-
+    '''
     dots = [1000, 10000, 100000, 10000000]
     for n in dots:
         approximate_pi(n)
@@ -114,9 +114,9 @@ def main():
     d = 11
     sphere_volume(n,d)
     print(f"Actual volume of {d} dimentional sphere = {hypersphere_exact(d)}")
-
+    
     #Ex3
-  
+
     n = 100000
     d = 11
     
@@ -129,7 +129,7 @@ def main():
     print(f"Ex3:\nAverage Volume = {average_volume}\nRegular loop time = {stop-start}")
     
     sphere_volume_parallel1(n, d, 10)
-
+    '''
     #Ex4
     n = 1000000
     d = 11
